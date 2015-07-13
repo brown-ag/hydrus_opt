@@ -3,9 +3,9 @@ library(plot3D)
 library(rgl)
 library(gridExtra)
 
-source("ct_methods.R")
+source("hydrus_methods.R")
 dimension=11
-simdir=paste("C:\\Users\\agbrown\\workspace\\alfalfa_gb\\",c("Simulations_vGM3\\","Simulations_Durner1\\","Simulations_MIM1\\"),sep="")
+simdir=paste("C:\\Users\\agbrown\\workspace\\hydrus_opt\\",c("Simulations_vGM3\\","Simulations_Durner1\\","Simulations_MIM1\\"),sep="")
 params_MIM=c("modelid","thetar","thetas","alpha","n","ksat","l","thrim","thsim","omega","pulse")
 params_DUR=c("MODELID","THETAR","THETAS","ALPHA1","ALPHA2","N1","N2","KSAT","L","W2","PULSE")
 params=rbind(params_DUR,params_DUR,params_MIM)
@@ -26,7 +26,7 @@ for(i in 1:length(nsims)) {
 	print(paste("Model ID lowest SSQ:",which(serr==min(serr))))
 	plot(fit[,2],ylim=c(-250,0))
 	ran=range(serr)
-	lines(unlist(sest[,which(serr<=0.05*(ran[2]-ran[1])]))
+	lines(unlist(sest[,which(serr<=0.05*(ran[2]-ran[1]))]))
 	#eeek=which(serr<10000)
 	#for(e in eeek) {
 	#  lines((1:length(fit[,2])),unlist(sest[1:length(sest[,e]),e]))
