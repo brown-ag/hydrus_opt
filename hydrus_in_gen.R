@@ -1,8 +1,8 @@
 #hydrus-1d input generator
 source("ct_methods.R")
 
-template_set="vGM"
-simdir=paste("C:\\Users\\agbrown\\workspace\\alfalfa_gb\\Simulations_",template_set,"3\\",sep="")
+template_set="SOILSTORAGE"
+simdir=paste("Simulations_",template_set,"",sep="")
 iteration=3
 disc=25 #'disc' defines the discretization within the specified min and maximum
 
@@ -68,6 +68,7 @@ vparams=sapply(X = 1:length(limits[,1]), function(i) {limits[i,1]!=limits[i,2]})
 simz=combn(rownames(limits[vparams,]),2)
 nsim=(length(simz)/2)
 print(simdir)
+
 print(paste("Making initial parameter maps for",nsim,"simulations..."))
 for(n in 1:nsim) {
   simpath=paste(simdir,n,sep="")
